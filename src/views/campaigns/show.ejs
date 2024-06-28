@@ -1,0 +1,10 @@
+<% layout('layouts/boilerplate') %>
+
+<h1><%= campaign.title %></h1>
+
+<% for(let player of campaign.players) { %>
+    <div>
+        <h3><%= player.name %></h3>
+        <h4>LEVEL <%= player.level %></h4>
+    </div>
+<% } %>
