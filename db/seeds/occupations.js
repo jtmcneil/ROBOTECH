@@ -238,7 +238,7 @@ Occupations = {
             //{ skill: "Mecha Combat: All Zentraedi style mecha", buff: 0 },  // TODO Add later
             { skill: "Weapon Systems", buff: 10 },
             { skill: "Radio: Basic", buff: 5 },
-            { skill: "Navigation: Air, Land, Water", buff: 10 },
+            { skill: "Navigation", buff: 10 },
             { skill: "Navigation: Space", buff: 10 },
             { skill: "W.P. Energy Rifle", buff: 0 },
             { skill: "W.P. Energy Pistol", buff: 0 },
@@ -300,20 +300,57 @@ Occupations = {
         reqOccSkills:[
             { skill: "Pilot Jet", buff: 10 },
             { skill: "Pilot Cyclone", buff: 10 },
-            { skill: "Mecha Combat: Cyclone (VR-041 only)", buff: 0 },  // Assuming buff is not specified for this skill
+            { skill: "Mecha Combat: Cyclone", buff: 0 },
             { skill: "Intelligence", buff: 20 },
             { skill: "Interrogation", buff: 15 },
             { skill: "Disguise", buff: 15 },
-            { skill: "W.P. Energy Rifle", buff: 0 },  // Assuming buff is not specified for this skill
-            { skill: "W. P. Gallant", buff: 0 },  // Assuming buff is not specified for this skill
-            { skill: "Hand to Hand: Martial Arts", buff: 0 }  // Assuming buff is not specified for this skill
+            { skill: "W.P. Energy Rifle", buff: 0 }, 
+            { skill: "W.P. Gallant", buff: 0 },
+            { skill: "Hand to Hand Combat: Martial Arts", buff: 0 } 
           ],
         choiceOccSkills:[],
         otherSkills: {
-            count: 0,
+            count: 16,
             allowed: {
-                categories: [],
-                specific: []
+                categories: [
+                    { category: "COMMUNICATIONS", buff: 10, required: 2},
+                    { category: "DOMESTIC"},
+                    { category: "ELECTRICAL"},
+                    { category: "ESPIONAGE/MILITARY", buff: 15, required: 2},
+                    { category: "Physical", buff: 5 },
+                    { category: "PILOT", exceptions: [
+                        "Mecha: Destroid",
+                        "Mecha Combat: Alpha", 
+                        "Mecha Combat: Beta",
+                        "Mecha Combat: Vindicator"
+                    ], buff: { "Air": 5 } },
+                    { category: "SCIENCE" },
+                    { category: "TECHNICAL", buff: 5 },
+                    { category: "ROGUE"},
+                    { category: "WILDERNESS", levelRequirement: 2},
+                    { category: "WEAPON PROFICIENCIES", exceptions: [ "W.P. Cyclone Weapon Systems" ] }
+                ],
+                specific: [
+                    // COMMUNICATIONS
+                    { skill: "Cryptography", buff: 15},
+                    // MECHANICAL
+                    { skill: "Basic Mechanics", buff: 5 },
+                    { skill: "Automotive Mechanics", buff: 5 },
+                    { skill: "Aircraft Mechanics", buff: 5 },
+                    { skill: "Computer Repair", buff: 5 },
+                    { skill: "Locksmith", buff: 5 },
+                    // MEDICAL
+                    { skill: "Paramedic", buff: 5 },
+                    //PILOT
+                    { skill: "Motorcycle", buff: 5 },
+                    { skill: "Mecha Combat: Alpha", buff: 5 },
+                    { skill: "Mecha Combat: Beta", buff: 5 },
+                    //TECHNICAL
+                    { skill: "Demolitions", buff: 10 },
+                    { skill: "Demolitions: Disposal", buff: 10 },
+                    //ROGUE
+                    { skill: "Streetwise", buff: 10}
+                ]
             }
         }
 
@@ -334,33 +371,64 @@ Occupations = {
         },
         levelXp: [1925, 3850, 7450, 14900, 21000, 31000, 41600, 53000, 73000, 103500, 139000, 189000, 239000, 289000, 339000],
         reqOccSkills:[
-            { skill: "Repairing Mecha", buff: 0 },  // Assuming buff is not specified for this skill
-            { skill: "Recognize Mecha Quality", buff: 0 },  // Assuming buff is not specified for this skill
+            { skill: "Repairing Mecha", buff: 0 },
+            { skill: "Recognize Mecha Quality", buff: 0 },
             { skill: "Mechanical Engineer", buff: 20 },
             { skill: "Veritech Mechanics", buff: 20 },
             { skill: "Mecha Mechanics", buff: 15 },
             { skill: "Mecha Electronics", buff: 15 },
             { skill: "Weapon Systems", buff: 10 },
             { skill: "Computer Operation", buff: 10 },
-            { skill: "W.P. Energy Pistol", buff: 0 },  // Assuming buff is not specified for this skill
-            { skill: "W.P. Energy Rifle", buff: 0 },  // Assuming buff is not specified for this skill
-            { skill: "Hand to Hand: Basic", buff: 0 }  // Assuming buff is not specified for this skill
+            { skill: "W.P. Energy Pistol", buff: 0 }, 
+            { skill: "W.P. Energy Rifle", buff: 0 }, 
           ]
           ,
-        choiceOccSkills:[],
+        choiceOccSkills:[
+            {
+                count: 1,
+                choices: [
+                    { skill: "Hand to Hand Combat: Basic", buff: 0 },
+                    { skill: "Hand to Hand Combat: Expert", buff: 0 , cost: 2}
+                ]
+            }
+        ],
         otherSkills: {
-            count: 0,
+            count: 16,
             allowed: {
-                categories: [],
-                specific: []
+                categories: [
+                    { category: "COMMUNICATIONS"},
+                    { category: "DOMESTIC" },
+                    { category: "ELECTRONIC", buff: 5 },
+                    { category: "MECHANICAL", buff: 15, required: 2},
+                    { category: "PHYSICAL" },
+                    { category: "PILOT", exceptions: [
+                        "Mecha: Battloid",
+                        "Mecha: E.B.S.I.S.",
+                        "Mecha: Cyclone",
+                        "Mecha: Destroid",
+                        "Mecha: Veritech",
+                        "Mecha: Zentraedi Style Battle Pods"
+                    ], buff: { "Ground": 10, "Air": 5 } },
+                    { category: "PILOT RELATED" },
+                    { category: "TECHNICAL" },
+                    { category: "WEAPON PROFICIENCIES", exceptions: [ "W.P. Cyclone Weapon Systems" ] }
+                ],
+                specific: [
+                    //MEDICAL
+                    { skill: "First Aid" },
+                    { skill: "Paramedic", cost: 2 },
+                    //SCIENCE
+                    { skill: "Mathematics: Basic" }, 
+                    { skill: "Mathematics: Advanced" },
+                ]
             }
         }
 
     },
     
     
-    Communications: {
-        name: "Communications",
+    CommunicationsEngineer: {
+        name: "Communications Engineer",
         description: `
             The communications engineer is the high-tech wizard who can link an entire world with sight and sound. This character has an in-depth knowledge of state-of-the-art communication systems, including satellite relays, laser transmissions, video telecasts, and surveillance. It is his or her job to establish and maintain communications on the battlefield and into space. The character can be a vital link to survival whether he/she is a field operator, a member of a reconnaissance team, or a deck officer on the bridge of a spaceship.
             The emphasis of this O.C.C. training is on communications and related skills; however, this is war, and the character is a soldier. Consequently, the communications engineer is also taught combat skills, and it is strongly suggested that he learn to pilot some form of mecha.
@@ -385,12 +453,50 @@ Occupations = {
             { skill: "Hand to Hand: Basic", buff: 0 }  // Assuming buff is not specified for this skill
           ]
           ,
-        choiceOccSkills:[],
+        choiceOccSkills:[
+            {
+                count: 1,
+                choices: [
+                    { skill: "Hand to Hand Combat: Basic", buff: 0 },
+                    { skill: "Hand to Hand Combat: Expert", buff: 0 , cost: 2}
+                ]
+            }
+        ],
         otherSkills: {
             count: 0,
             allowed: {
-                categories: [],
-                specific: []
+                categories: [
+                    { category: "COMMUNICATIONS", buff: 10 }, 
+                    { category: "DOMESTIC" },
+                    { category: "PHYSICAL"},
+                    { category: "PILOT", exceptions: [
+                        "Mecha: Battloid",
+                        "Mecha: E.B.S.I.S.",
+                        "Mecha: Cyclone",
+                        "Mecha: Destroid",
+                        "Mecha: Veritech",
+                        "Mecha: Zentraedi Style Battle Pods"
+                    ]},
+                    { category: "PILOT RELATED", buff: 10},
+                    { category: "TECHNICAL", buff: 5 },
+                    { category: "WEAPON PROFICIENCIES", exceptions: [ "W.P. Cyclone Weapon Systems" ] }
+                    
+                ],
+                specific: [
+                    //ELECTIRCAL
+                    { skill: "Basic Electronics", buff: 5 },
+                    { skill: "Electrical Engineer", buff: 5, cost: 3 },
+                    //MECHANICAL
+                    { skill: "Automotive Mechanics" },
+                    { skill: "Aircraft Mechanics" },
+                    { skill: "Basic Mechanics" },
+                    { skill: "Computer Repair" },
+                    //MEDICAL
+                    { skill: "First Aid" },
+                    //SCIENCE
+                    { skill: "Mathematics: Basic" }, 
+                    { skill: "Mathematics: Advanced" }
+                ]
             }
         }
 
@@ -420,12 +526,53 @@ Occupations = {
             { skill: "Hand to Hand: Basic", buff: 0 }  // Assuming buff is not specified for this skill
           ]
           ,
-        choiceOccSkills:[],
+        choiceOccSkills:[
+            {
+                count: 1,
+                choices: [
+                    { skill: "Medical: Paramedic", buff: 10 },
+                    { skill: "Medical Doctor", buff: 10 , cost: 2}
+                ]
+            },
+            {
+                count: 1,
+                choices: [
+                    { skill: "Hand to Hand Combat: Basic", buff: 0 },
+                    { skill: "Hand to Hand Combat: Expert", buff: 0 , cost: 1},
+                    { skill: "Hand to Hand Combat: Martial Arts", buff: 0 , cost: 2},
+                ]
+            }
+        ],
         otherSkills: {
-            count: 0,
+            count: 18,
             allowed: {
-                categories: [],
-                specific: []
+                categories: [
+                    { category: "COMMUNICATIONS", buff: 5 },
+                    { category: "DOMESTIC" },
+                    { category: "ELECTRICAL", buff: 5 },
+                    { category: "MECHANICAL", buff: 5 },
+                    { category: "MEDICAL", buff: 10},
+                    { category: "PHYSICAL" },
+                    { category: "PILOT", exceptions: [
+                        "Mecha: Battloid",
+                        "Mecha: E.B.S.I.S.",
+                        "Mecha: Cyclone",
+                        "Mecha: Destroid",
+                        "Mecha: Veritech",
+                        "Mecha: Zentraedi Style Battle Pods"
+                    ]},
+                    { category: "PILOT RELATED" },
+                    { category: "ROGUE" },
+                    { category: "SCIENCE", buff: 15 },
+                    { category: "TECHNICAL", buff: 10 },
+                    { category: "WEAPON PROFICIENCIES", exceptions: [ "W.P. Cyclone Weapon Systems" ] },
+                    { category: "WILDERNESS", buff: 3}
+                ],
+                specific: [
+                    //ESPIONAGE/MILITARY
+                    { skill: "Land Navigation" },
+                    { skill: "Wilderness Survival" },
+                ]
             }
         }
 

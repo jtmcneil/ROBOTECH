@@ -870,14 +870,6 @@ module.exports = [
         requiredSkills: [],
       },
       {
-        name: "Demolitions",
-        description: "Skill in using explosives to blow open safes. Requires electric drill, blowtorch, or laser drill, and plastic explosives. A successful roll is needed to detonate explosives. Base Skill: 60% +3% per level of experience. Requires Demolitions skill.",
-        category: "ROGUE",
-        basePercentage: 60,
-        levelBonus: 3,
-        requiredSkills: [],
-      },
-      {
         name: "Prowl",
         description: "Ability to move quietly and stealthily, avoiding detection. Base Skill: 40% +5% per level of experience.",
         category: "ROGUE",
