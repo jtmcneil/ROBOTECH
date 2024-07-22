@@ -12,7 +12,7 @@ const RequirementsSchema = new Schema({
         type: String,
         enum: ['Human', 'Zentraidi']
     }
-});
+}, {_id: false});
 
 const SkillBuffSchema = new Schema({
     skill: {
@@ -22,7 +22,7 @@ const SkillBuffSchema = new Schema({
     },
     buff: Number,
     cost: Number
-});
+}, {_id: false});
 
 const ChoiceSkillSchema = new Schema({
     count: {
@@ -33,7 +33,7 @@ const ChoiceSkillSchema = new Schema({
         type: SkillBuffSchema,
         required: true
     }]
-})
+}, {_id: false})
 
 const OtherSkillReqSchema = new Schema({
     category:{
@@ -47,7 +47,7 @@ const OtherSkillReqSchema = new Schema({
         type: Number,
         required: true
     }
-})
+}, {_id: false})
 
 const OccupationSchema = new Schema({
     name: {

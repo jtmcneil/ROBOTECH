@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 //Seeds
 const skillSeeds = require('./seeds/skills');
 const occSeeds = require('./seeds/occupations');
+const playerSeeds = require('./seeds/players');
 
 //Models
 const Skill = require('../src/models/skill');
 const Occupation = require('../src/models/occupation');
+const Player = require('../src/models/player');
 
 
 mongoose.connect('mongodb://localhost:27017/robotech', {});
@@ -182,7 +184,40 @@ const seedOccupations = async () => {
         
 };
 
-const seedPlayers = async () => {};
+const seedPlayers = async () => {
+
+    // Erase Skills
+    await Player.deleteMany({});
+    console.log('Seeding Players');
+    console.log(`${playerSeeds.length} players in player seeds file`);
+
+    let playerCount = 0;
+
+    for (let playerSeed of playerSeeds) {
+
+        // replace occupation name with _id
+        const occupationObj = await Occupation.findOne({ name: playerSeed.occupation });
+        playerSeed.occupation = occupationObj._id;
+
+        // replace skill names with skill _ids
+        for (let skill of playerSeed.occSkills) {
+            const skillObj = await Skill.findOne({ name: skill.skill });
+            skill.skill = skillObj._id;
+        }
+        for (let skill of playerSeed.otherSkills) {
+            const skillObj = await Skill.findOne({ name: skill.skill });
+            skill.skill = skillObj._id;
+        }
+
+        const player = new Player(playerSeed);
+        await player.save();
+        playerCount++;
+
+    }
+
+    console.log(`Added ${playerCount} players to the DB`);
+
+};
 
 const seedCampaigns = async () => {};
 

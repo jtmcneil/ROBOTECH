@@ -2,6 +2,37 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const AttributeSchema = new Schema({
+
+    attribute: {
+        type: String,
+        enum: ['IQ', 'ME', 'MA', 'PS', 'PP', 'PE', 'PB', 'Spd'],
+        required: true
+    },
+
+    value: { 
+        type: Number,
+        required: true
+    }
+
+}, {_id: false})
+
+const SkillAbilitySchema = new Schema ({
+
+    skill: {
+        type: Schema.Types.ObjectId,
+        ref: 'Skill',
+        required: true
+    },
+
+    ability: {
+        type: Number,
+        min: 0,
+        max: 98
+    }
+
+}, {_id: false});
+
 const PlayerSchema = new Schema({
 
     name: {
@@ -9,32 +40,23 @@ const PlayerSchema = new Schema({
         required: true
     },
     
-    attributes: [
-        {
-            attribute: {
-                type: String,
-                enum: ['IQ', 'ME', 'MA', 'PS', 'PP', 'PE', 'PB', 'Spd'],
-                required: true
-            },
-            value: Number
-        }
-    ],
+    attributes: [AttributeSchema],
     
     race: {
         type: String,
-        enum: ['human', 'zentraidi'],
+        enum: ['Human', 'Zentraidi'],
         required: true
     },
     
     sex: {
         type: String,
-        enum: ['male', 'female'],
+        enum: ['Male', 'Female'],
         required: true
     },
     
     age: Number,
-    weight: Number,
-    height: Number,
+    weight: Number, //lbs
+    height: Number, //inches
     origin: String,
     familyTies: String,
     birthOrder: String,
@@ -54,39 +76,21 @@ const PlayerSchema = new Schema({
     },
     
     occupation: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'Occupation',
         required: true
     },
     
-    occSkills: [String],
-    otherSkills: [String],
-    
-
-    /*
-    name: string
-    attributes: [{
-        name: enum [IQ, ME, MA, PS, PP, PE, PB, Spd]
-        value: int }]
-    race: enum [human, zentraedi]
-    sex: string
-    age: int
-    weight: int
-    height: int
-    origin: string
-    familyTies: string
-    birthOrder: string
-    disposition: string
-    alignment: string
-    experience: int
-    level: int
-    occupation: Occupation
     occSkills: [{
-        skill: Skill 
-        percentage: int }]
+        type: SkillAbilitySchema,
+        required: true
+    }],
+
     otherSkills: [{
-        skill: Skill 
-        percentage: int }]
-    */
-    
+        type: SkillAbilitySchema,
+        required: true
+    }]
 
 })
+
+module.exports = mongoose.model('Player', PlayerSchema);

@@ -44,7 +44,6 @@ Occupations = {
             categories: [
                 { category: "COMMUNICATIONS" }, 
                 { category: "DOMESTIC" },
-                { category: "DOMESTIC" },
                 { category: "PHYSICAL" },
                 { category: "PILOT", exceptions: [ "Mecha: Destroid" ], buff: { "Air": 10 } },
                 { category: "PILOT RELATED", buff: 10},
