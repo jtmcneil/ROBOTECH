@@ -28,7 +28,7 @@ module.exports = [
         requiredSkills: []
     },
     {
-        name: "Laser",
+        name: "Laser Communications",
         description: "Provides the character with in-depth knowledge of laser communication systems.",
         category: "COMMUNICATIONS",
         basePercentage: 40,
@@ -76,7 +76,7 @@ module.exports = [
         category: "COMMUNICATIONS",
         basePercentage: 40,
         levelBonus: 5,
-        requiredSkills: ["Basic Electronics", "Electrical Engineering"] //TODO: This is an OR, not an AND
+        requiredSkills: ["Basic Electronics", "Electrical Engineer"] //TODO: This is an OR, not an AND
     },
     {
         name: "T.V./Video",
@@ -146,7 +146,7 @@ module.exports = [
         category: "ELECTRICAL",
         basePercentage: 45,
         levelBonus: 5,
-        requiredSkills: ["Basic Mathematics", "Advanced Mathematics"] // TODO OR not AND
+        requiredSkills: ["Mathematics: Basic", "Mathematics: Advanced"] // TODO OR not AND
     },
     {
         name: "Mecha Electronics",
@@ -338,7 +338,7 @@ module.exports = [
         category: "MECHANICAL",
         basePercentage: 25,
         levelBonus: 5,
-        requiredSkills: ["Electronics"]
+        requiredSkills: []
     },
     {
         name: "Mecha Mechanics",
@@ -372,7 +372,7 @@ module.exports = [
         category: "MEDICAL",
         basePercentage: 35,
         levelBonus: 5,
-        requiredSkills: ["Biology", "Chemistry", "Chemistry: Analytical", "Mathematics"] //TODO AND not OR
+        requiredSkills: ["Biology", "Chemistry", "Chemistry: Analytical", "Mathematics: Basic"] //TODO AND not OR
     },
     {
         name: "First Aid",
@@ -602,7 +602,7 @@ module.exports = [
         subCategory: "Mecha",
         basePercentage: null,
         levelBonus: null,
-        requiredSkills: [],
+        requiredSkills: ["Mecha: Cyclone"],
       },
       {
         name: "Mecha Combat Basic: Vindicator",
@@ -638,7 +638,7 @@ module.exports = [
         subCategory: "Mecha",
         basePercentage: null,
         levelBonus: null,
-        requiredSkills: [],
+        requiredSkills: ["Mecha: Cyclone"],
       },
       {
         name: "Mecha Combat: Vindicator",
@@ -801,7 +801,7 @@ module.exports = [
         category: "PILOT RELATED",
         basePercentage: 60,
         levelBonus: 5,
-        requiredSkills: ["Basic Mathematics", "Read Sensory Instruments"],
+        requiredSkills: ["Mathematics: Basic", "Read Sensory Instruments"],
       },
       {
         name: "Navigation: Space",
@@ -809,7 +809,7 @@ module.exports = [
         category: "PILOT RELATED",
         basePercentage: 60,
         levelBonus: 5,
-        requiredSkills: ["Basic Mathematics", "Read Sensory Instruments"],
+        requiredSkills: ["Mathematics: Basic", "Read Sensory Instruments"],
       },
       {
         name: "Read Sensory Instruments",
@@ -846,7 +846,7 @@ module.exports = [
         requiredSkills: [],
       },
       {
-        name: "Pick Locks",
+        name: "Pick Locks: Rogue",
         description: "Knowledge of methods, techniques, and tools for picking/opening key and basic tumbler locks. Takes 1D6 melee rounds per attempt. Base Skill: 35% +5% per level of experience.",
         category: "ROGUE",
         basePercentage: 35,
@@ -854,7 +854,7 @@ module.exports = [
         requiredSkills: [],
       },
       {
-        name: "Pick Pockets",
+        name: "Pick Pockets: Rogue",
         description: "Skill to remove items from a person without their awareness. Failure means the item remains, with a 67% chance of detection. Base Skill: 30% +5% per level of experience.",
         category: "ROGUE",
         basePercentage: 30,
@@ -870,7 +870,7 @@ module.exports = [
         requiredSkills: [],
       },
       {
-        name: "Prowl",
+        name: "Prowl: Rogue",
         description: "Ability to move quietly and stealthily, avoiding detection. Base Skill: 40% +5% per level of experience.",
         category: "ROGUE",
         basePercentage: 40,
@@ -1106,7 +1106,7 @@ module.exports = [
       {
         name: "Archery",
         description: "The practiced use of bow and arrow and crossbow. Bonus to strike with bow and arrow/crossbow: +1 at level one, +1 to strike for every additional two levels of experience. Rate of Fire: Two shots at level one, and one additional shot for every two levels of experience. Short Bow: Range 420ft, 1D6 damage. Longbow: Range 700ft, 1D8 damage. Compound Bow: Range 800ft, 2D6 damage. Crossbow: Range 700ft, 1D8 damage. The skill also includes the ability to select the proper wood and make a quality bow. Base Skill to make a bow: 40% + 5% per level of experience. A failed roll results in a poorly crafted bow, -1 to strike, and a 50% chance of cracking when fired.",
-        category: "WILDERNESS SKILLS",
+        category: "WILDERNESS",
         basePercentage: 40,
         levelBonus: 5,
         requiredSkills: [],
@@ -1148,7 +1148,7 @@ module.exports = [
         description: "Practiced skill in hunting, killing, and preparing animals for food or sport. Includes bonuses for W.P. Rifle, +2% to prowl, +5% to track animals, +5% to skin animals, and +5% to cook the catch.",
         category: "WILDERNESS",
         basePercentage: null,
-        levelBonus: null, // No specific base skill increase mentioned
+        levelBonus: null,
         requiredSkills: [],
       },
       {
