@@ -5,11 +5,13 @@ const mongoose = require('mongoose');
 const skillSeeds = require('./seeds/skills');
 const occSeeds = require('./seeds/occupations');
 const playerSeeds = require('./seeds/players');
+const campaignSeeds = require('./seeds/campaigns');
 
 //Models
 const Skill = require('../src/models/skill');
 const Occupation = require('../src/models/occupation');
 const Player = require('../src/models/player');
+const Campaign = require('../src/models/campaign');
 
 
 mongoose.connect('mongodb://localhost:27017/robotech', {});
@@ -186,7 +188,7 @@ const seedOccupations = async () => {
 
 const seedPlayers = async () => {
 
-    // Erase Skills
+    // Erase Players
     await Player.deleteMany({});
     console.log('Seeding Players');
     console.log(`${playerSeeds.length} players in player seeds file`);
@@ -219,13 +221,42 @@ const seedPlayers = async () => {
 
 };
 
-const seedCampaigns = async () => {};
+const seedCampaigns = async () => {
+
+    // Erase Campaigns
+    await Campaign.deleteMany({});
+    console.log('Seeding Campaigns');
+    console.log(`${campaignSeeds.length} campaigns in campaign seeds file`);
+
+    let campaignCount = 0;
+
+    for (let campaignSeed of campaignSeeds) {
+
+        // replace player names with IDs
+        for (let i = 0; i < campaignSeed.players.length; i++) {
+            const playerObj = await Player.findOne({ name: campaignSeed.players[i] });
+            campaignSeed.players[i] = playerObj._id;
+        }
+
+        const campaign = new Campaign(campaignSeed);
+        await campaign.save();
+        campaignCount++;
+
+    }
+
+    console.log(`Added ${campaignCount} campaigns to the DB`);
+
+};
 
 const seedDB = async() => {
     await seedSkills();
+    console.log('----------');
     await seedOccupations();
+    console.log('----------');
     await seedPlayers();
+    console.log('----------');
     await seedCampaigns();
+    console.log('----------');
 };
 
 seedDB().then(() => {
