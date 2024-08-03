@@ -1,0 +1,806 @@
+
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* NAVBAR */
+
+#navbar {
+    position: absolute;
+    width: 100%;
+    top: 5px;
+    
+    display: flex;
+    align-items: center;
+
+    z-index: 100;
+}
+
+#navbar div {
+    display: flex;
+    justify-content: space-around;
+    flex: 2;
+
+    gap: 10px;
+    margin: 0px 10px;
+}
+
+#navbar #logo {
+    flex: 3;
+}
+
+#logo a {
+    text-decoration: none;
+    font-family: 'Optima';
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 0 0.3rem black;
+    position: relative;
+
+    transition: all ease-in-out 0.2s;
+}
+
+#logo a::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    width: 0;
+    height: 80%;
+    border-radius: 10px;
+    background-color: #C62828;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0.5rem #C62828;
+
+    transition: all ease-in-out 0.2s;
+    z-index: -1;
+}
+
+#logo a:hover::before {
+
+    width: 105%;
+    
+
+}
+
+#logo a:hover {
+    text-shadow: 0 0 0.1rem white;
+}
+
+.nav-button {
+    background-color: white;
+    transform: skewX(-10deg);
+    border-radius: 2px;
+    max-width: 150px;
+
+}
+
+.nav-button a {
+
+    width: 100%;
+    height: 100%;
+
+    text-decoration: none;
+    text-align: center;
+
+    font-family: "Optima";
+    font-weight: bold;
+    font-size: 1rem;
+    color: black;
+    transform: skewX(10deg);
+}
+
+.nav-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #1F4E7C;
+
+    border-radius: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
+    
+    box-shadow: 0 0 0.5rem #1F4E7C;
+
+    transition: all ease-in-out 0.2s;
+    z-index: -1;
+}
+
+.nav-button:hover::before {
+    width: 100%;
+}
+
+.nav-button:hover a {
+    color: white;
+}
+
+
+/* HOME PAGE */
+
+#title-content {
+    color: white;
+    transform: skewX(15deg);
+    padding-left: 22%;
+}
+
+
+#title-content h5 {
+    font-family: "Optima";
+    font-weight: 100;
+    font-size: 18pt;
+    text-shadow: 0 0 1rem black;
+}
+
+#title-content h1 {
+    font-family: "Optima";
+    font-weight: 700;
+    font-size: 60pt;
+    letter-spacing: .2rem;
+    text-shadow: 0 0 0.1rem black;
+}
+
+#title-panel {
+
+    animation: 3s ease-in-out 0s 1 landingAnimation;
+    overflow: hidden;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(#0b0b0b, #242424);
+    transform: skewX(-15deg);
+    transform-origin: top left;
+    z-index: 1;
+    box-shadow: 0 0 0 5px white, 5px 0px 5px rgba(0,0,0,0.7);
+
+    transition: all 2s ease-in-out;
+}
+
+#title-panel:hover {
+    width: 62%;
+    box-shadow: 0 0 0 8px white, 5px 0px 5px rgba(0,0,0,0.9);
+}
+
+#decor-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -300px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#decor-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.skew-btn {
+    text-decoration: none;
+    padding: 0.3rem;
+    transform: skewX(-15deg);
+    transform-origin: bottom left; 
+    border-radius: 5px;
+    background-color: #C62828;
+    text-align: center;
+    font-size: 14pt;
+    width: 50%;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s;
+
+}
+
+.skew-btn:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0.5rem #C62828;
+    text-shadow: 0 0 0.1rem white;
+}
+
+/* Campaigns Index */
+
+
+#campaign-container {
+
+    position: absolute;
+    top: 0;
+    left: 0; 
+
+    display: flex;
+    width: 100%;
+
+    transition: all ease-out 0.2s;
+}
+
+.campaign-card {
+
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    border-right: 10px solid black; 
+
+    transform: skewX(-10deg);
+    transform-origin: top left;
+
+    flex: 7;
+    display: flex;
+    justify-content: center;
+
+    transition: all ease-out 0.1s;
+}
+
+.campaign-card h2 {
+
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%) skewX(10deg);
+    min-width: 200px;
+    
+    font-family: "Optima";
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 0.1rem black;
+
+    color: white;
+
+    z-index: 2;
+}
+
+.campaign-card:first-child h2 {
+    left: 60%;
+}
+
+.campaign-card img {
+
+    height: 100%;
+
+    transform: skewX(10deg);
+
+    transition: all ease-out 10s;
+}
+
+.campaign-card:hover {
+    flex: 8;
+}
+
+.campaign-card:hover img {
+    transform: scale(1.1) skewX(10deg);
+}
+
+.campaign-gradient {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,1) 90%); 
+
+    z-index: 1;
+}
+
+#new-campaign {
+
+    flex: 5;
+    border-right: solid 10px #0b0b0b;
+    background-color: #0b0b0b;
+
+}
+
+#new-campaign h2 {
+
+    bottom: 50%;
+    transform: translate(-50%, 50%) skewX(10deg);
+
+}
+
+#new-campaign a {
+    width: 200%;
+    height: 100%;
+}
+
+#new-campaign:hover {
+    flex: 7;
+}
+
+#index-background {
+    
+    position: absolute;
+
+    top:0;
+    right: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: black;
+
+    z-index: -1;
+
+}
+
+/* CAMPAIGN SHOW PAGE */
+
+#campaign-background {
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url("/imgs/wallpaper 2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+}
+
+#player-container {
+
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 60px;
+
+}
+
+#campaign-name {
+
+    width: 50%;
+
+    padding: 0 30px;
+    margin: 0;
+}
+
+#campaign-name h1 {
+
+    color: white;
+    font-family: "Optima";
+    font-weight: 600;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0.3rem black;
+
+}
+
+#player-detail-pane{
+
+    position:absolute;
+    right: 0;
+    top: 0;
+    width: 0%; /* TODO: change this back to 0 */
+    height: 100vh;
+
+    display: flex;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    border-left: 1px solid rgba(255,255,255, 0.4);
+
+    box-shadow: 0 0 1rem 0.2rem black;
+
+    transition: all ease 1s;
+
+}
+
+#player-detail-pane.expanded {
+    width: 50%;
+}
+
+#player-detail-container {
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 70px 30px 30px 30px;
+
+
+    backdrop-filter: blur(15px);
+}
+
+#player-detail-container #img-container {
+
+    width: 100%;
+    max-height: 10%;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 0 1rem black;
+    cursor: default;
+
+    transition: all 1s ease;
+}
+
+#player-detail-container #img-container:not(.expanded):hover {
+    box-shadow: 0 0 0.5rem white;
+    cursor: pointer;
+}
+
+#player-detail-container #img-container.expanded {
+    max-height: 50%;
+}
+
+#player-detail-container img {
+
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover;
+
+}
+
+
+
+#player-info {
+
+    /* flex: 1; */
+    display: flex;
+
+    font-family: "Optima";
+    color: white;
+
+    margin: 5px 0;
+
+}
+
+#player-info #level-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#player-info #level-info h5 {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+#player-info #level-info h1 {
+    font-weight: 900;
+    border: 5px solid white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+#player-info #name-occupation {
+    flex: 5;
+    text-align: center;
+}
+
+#player-info #name-occupation h1 {
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
+#player-file {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255, 0.5);
+    box-shadow: inset 0 0 1rem rgba(255,255,255, 0.1), 0 0 1rem black;
+
+    width: 100%;
+    transition: all 1s ease;
+
+}
+
+#player-file.expanded {
+    height: 100%;
+}
+
+#player-file hr {
+    margin: 0;
+    border: 1px solid;
+    width: 100%;
+}
+
+.player-folder {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.2);
+
+    transition: all 0.5s ease;
+}
+
+
+.player-folder a {
+    width: 100%;
+
+    margin: 0 5px;
+
+    text-decoration: none;
+    color: white;
+}
+
+.player-folder:not(.expanded):hover {
+    background-color: rgba(255,255,255,0.5);
+}
+
+.player-folder.expanded {
+    flex: 1;
+}
+
+.player-folder-content {
+
+    display: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 5px;
+
+    width: 100%;
+    height: 100%;
+
+    transition: all 0s 1s ease;
+
+}
+
+.player-folder.expanded .player-folder-content {
+    display: flex;
+}
+
+.attr-roller {
+    display: flex;
+    width: 22%;
+    height: 48%;
+    border-radius: 30px;
+    background-color: black;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .attr-roller:not(.rolled):hover {
+    animation: shake 0.4s ease both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+  }
+  
+  .rolled {
+    cursor: default;
+  }
+  
+  .attr-acronym {
+    text-shadow: 0 0 1rem black;
+    line-height: 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 1;
+  }
+  
+  .attr-number {
+    font-weight: 600;
+    font-size: 3rem;
+    padding: 0 20%;
+    color: red;
+    position: relative;
+    transition: all 3s ease;
+  }
+  
+  .attr-die {
+    position: absolute;
+  }
+  
+  .attr-die:nth-child(1) {
+    top: 0;
+    left: 0;
+  }
+  
+  .attr-die:nth-child(2) {
+    top: 0;
+    right: 0;
+  }
+  
+  .attr-die:nth-child(3) {
+    bottom: 0;
+    left: 0;
+  }
+  
+  .attr-die:nth-child(4) {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .attr-name-full {
+    text-align: center;
+    text-shadow: 0 0 1rem black;
+    line-height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 80%;
+    z-index: 1;
+  }
+  
+  circle {
+    fill: none;
+    stroke-width: 10px;
+  }
+  
+  svg.back {
+    position: absolute;
+    stroke: #333333;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 0;
+  }
+  
+  svg.front {
+    position: absolute;
+    stroke: red;
+    stroke-dasharray: 290;
+    stroke-dashoffset: 290;
+    transition: all 3s ease;
+  }
+  
+  svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-55%);
+  }
+  
+  .exceptional {
+    position: absolute;
+    color: red;
+    top: 40%;
+    text-shadow: 0 0 0.2rem red;
+    animation: exceptional 3s ease-out forwards;
+  }
+  
+  @keyframes fill-attr-circle {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes shake {
+    10%,
+    90% {
+      transform: translate3d(-1px, -2, 2px);
+    }
+    20%,
+    80% {
+      transform: translate3d(2px, 3px, -2px);
+    }
+  
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-2px, 3px, -1px);
+    }
+    40%,
+    60% {
+      transform: translate3d(2px, -1px, -3px);
+    }
+  }
+  
+  @keyframes exceptional {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opactity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+  }
+
+
+
+
+
+
+
+#players-gallery {
+
+    padding: 10px 30px;
+
+    background-color: #333333;
+    box-shadow: inset 0 0 1rem black;
+    border-top: 1px solid rgba(255,255,255,0.6);
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+
+    color: white;
+    font-family: "Optima";
+}
+
+#players-list {
+
+    display: flex;
+    padding-bottom: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+#players-list:has(div.selected) {
+    width: 50%;
+}
+
+.player-icon {
+    position: relative;
+    min-width: 150px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin-right: 20px;
+    box-shadow: 0 0 1rem black;
+
+    transition: all ease 0.2s;
+}
+
+.player-icon .player-gradient {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,1) 90%);
+}
+
+.player-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-icon h3 {
+
+    font-size: 1rem;
+    color: white;
+    font-family: Times;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: -8px;
+    width: 150px;
+    text-align: center;
+    text-shadow: 0 0 5px black;
+
+}
+
+.player-icon:hover {
+    transform: scale(1.1);
+}
+
+.player-icon.selected {
+    transform: scale(1.1);
+    border: 1px solid white;
+    box-shadow: 0 0 0.5rem white;
+}

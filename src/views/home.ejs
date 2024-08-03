@@ -1,8 +1,19 @@
 <% layout('layouts/boilerplate') %>
+<%- include('partials/navbar', {page: "home"}) %>
 
-        <h5>ROBOTECH: THE ROLE PLAYING GAME</h5>
-        <h1>CHARACTER CREATOR</h1>
-        <a href="/campaigns">Get Started</a>
-        <!-- TODO: Move image to cloud -->
-        <br>
-        <img src="imgs/splash.jpg">
+<div id="title-panel">
+        <div id="title-content" class="d-flex flex-column min-vh-100 justify-content-center">
+                <h5>ROBOTECH: THE ROLE PLAYING GAME</h5>
+                <h1>CHARACTER CREATOR</h1>
+                <a href="/campaigns" class="skew-btn transition-link">GET STARTED</a>
+        </div>
+</div>
+<div id="decor-panel">
+        <iframe
+                src="https://www.youtube.com/embed/d0MRkodkOGo?autoplay=1&mute=1&controls=0&loop=1?modestbranding=1"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                frameborder="0">
+        </iframe>
+</div>
+

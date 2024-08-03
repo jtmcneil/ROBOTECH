@@ -10,6 +10,7 @@ const CampgaignSchema = new Schema({
     },
 
     description: String,
+    img: String,
 
     players: [{
         type: Schema.Types.ObjectId,

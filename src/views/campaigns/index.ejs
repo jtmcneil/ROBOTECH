@@ -1,3 +1,23 @@
 <% layout('layouts/boilerplate') %>
+<%- include('../partials/navbar', {page: "index"}) %>
 
-<h1>campaigns</h1>
+<div id="campaign-container" class=" text-center">
+    <% for (let campaign of campaigns) {%>
+        <div class="campaign-card">
+            <a href="campaigns/<%= campaign._id %>">
+                <div class="campaign-gradient"></div>
+                <img src="<%= campaign.img %>" alt="">
+                <h2><%= campaign.name %></h2>
+            </a>
+        </div>
+    <% } %> 
+    <div id="new-campaign" class="campaign-card">
+        <a href="campaigns/new">
+            <div>
+                    <h2>NEW CAMPAIGN</h1>
+            </div>
+        </a>
+    </div>
+    <a href="campaigns/new"><div id="index-background"></div></a>
+</div>
+

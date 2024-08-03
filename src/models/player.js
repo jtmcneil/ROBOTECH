@@ -54,6 +54,8 @@ const PlayerSchema = new Schema({
         required: true
     },
     
+    img: String,
+
     age: Number,
     weight: Number, //lbs
     height: Number, //inches

@@ -1,28 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const catchAsync = require('../util/catchAsync');
+
+const campaign = require('../controllers/campaign');
+
 router.route('/')
-    .get((req, res) => {
-        res.render('campaigns/index');
-    });
+    .get(catchAsync(campaign.renderIndex));
 
 router.route('/:id')
-    .get((req, res) => {
-        const campaign = {
-            title: "Battle of Macross City",
-            players: [
-                {
-                    name: "Rick Hunter",
-                    level: 5
-                },
-                {
-                    name: "Roy Focker",
-                    level: 2
-                }
-            ]
-        }
-        res.locals.title = campaign.title
-        res.render('campaigns/show', { campaign });
-    })
+    .get(catchAsync(campaign.renderCampaign));
 
 module.exports = router;
