@@ -28,6 +28,7 @@ module.exports = [
         disposition: "Cool guy",
         alignment: "Neutral Good",
 
+        hp: 15,
         experience: 0,
         level: 1,
         
@@ -89,6 +90,7 @@ module.exports = [
         disposition: "Cool gal",
         alignment: "Neutral Evil",
 
+        hp: 15,
         experience: 0,
         level: 1,
         
@@ -150,6 +152,7 @@ module.exports = [
         disposition: "Cool gal",
         alignment: "Neutral Evil",
 
+        hp: 15,
         experience: 0,
         level: 1,
         

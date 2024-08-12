@@ -50,8 +50,7 @@ const PlayerSchema = new Schema({
     
     sex: {
         type: String,
-        enum: ['Male', 'Female'],
-        required: true
+        enum: ['Male', 'Female']
     },
     
     img: String,
@@ -64,6 +63,11 @@ const PlayerSchema = new Schema({
     birthOrder: String,
     disposition: String,
     alignment: String,
+
+    hp:{
+        type: Number,
+        required: true
+    },
 
     experience: {
         type: Number,

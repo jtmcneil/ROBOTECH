@@ -1,6 +1,7 @@
 
 const Campaign = require('../models/campaign');
 const Player = require('../models/player');
+const Occupation = require('../models/occupation');
 
 module.exports.renderIndex = async (req, res) => {
     const campaigns = await Campaign.find({});
@@ -9,6 +10,18 @@ module.exports.renderIndex = async (req, res) => {
 
 module.exports.renderCampaign = async (req, res) => {
     const campaign = await Campaign.findById(req.params.id)
-        .populate('players');
-    res.render('campaigns/show', { campaign });
+        .populate('players',{_id: 1, name: 1, img: 1});
+    const occupations = await Occupation.find({}, {_id: 1, name: 1, img: 1});
+    res.render('campaigns/show', { campaign, occupations });
+}
+
+module.exports.createCharacter = async (req, res) => {
+    const { id } = req.params;
+    const campaign = await Campaign.findById(id);
+    console.log(req.body);
+    const newPlayer = new Player(req.body);
+    await newPlayer.save();
+    campaign.players.push(newPlayer);
+    await campaign.save();
+    res.redirect(`/campaigns/${id}`);
 }

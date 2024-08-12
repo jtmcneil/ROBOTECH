@@ -8,10 +8,6 @@ const RequirementsSchema = new Schema({
         enum: ['IQ', 'ME', 'MA', 'PS', 'PP', 'PE', 'PB', 'Spd']
     },
     value: Number,
-    race: {
-        type: String,
-        enum: ['Human', 'Zentraidi']
-    }
 }, {_id: false});
 
 const SkillBuffSchema = new Schema({
@@ -33,7 +29,7 @@ const ChoiceSkillSchema = new Schema({
         type: SkillBuffSchema,
         required: true
     }]
-}, {_id: false})
+});
 
 const OtherSkillReqSchema = new Schema({
     category:{
@@ -58,6 +54,10 @@ const OccupationSchema = new Schema({
     description: {
         type: String,
         required: true,
+    },
+    img: {
+        type: String,
+        required: true
     },
     requirements: [{
         type: RequirementsSchema,

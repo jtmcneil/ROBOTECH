@@ -6,7 +6,7 @@ const Skill = require('../models/skill');
 module.exports.getPlayer = async (req, res) => {
     const player = await Player.findById(req.params.id)
         .populate('occupation')
-        .populate('occSkills')
-        .populate('otherSkills');
+        .populate('occSkills.skill')
+        .populate('otherSkills.skill');
     res.json(player);
 }

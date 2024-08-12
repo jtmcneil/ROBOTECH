@@ -7,6 +7,8 @@ const morgan = require('morgan');
 
 const campaignRoutes = require('./routes/campaigns');
 const playerRoutes = require('./routes/players');
+const occupationRoutes = require('./routes/occupations');
+const skillRoutes = require('./routes/skills');
 
 // connect to DB
 mongoose.connect('mongodb://localhost:27017/robotech', {});
@@ -26,6 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // MIDDLEWEAR
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(morgan('dev'));
@@ -44,6 +47,8 @@ app.get('/', (req, res) => {
 
 app.use('/campaigns', campaignRoutes);
 app.use('/players', playerRoutes);
+app.use('/occupations', occupationRoutes);
+app.use('/skills', skillRoutes);
 
 app.listen(3000, ()=> {
     console.log('Serving on port 3000');

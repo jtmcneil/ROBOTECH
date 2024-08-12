@@ -9,6 +9,7 @@ router.route('/')
     .get(catchAsync(campaign.renderIndex));
 
 router.route('/:id')
-    .get(catchAsync(campaign.renderCampaign));
+    .get(catchAsync(campaign.renderCampaign))
+    .post(catchAsync(campaign.createCharacter));
 
 module.exports = router;
