@@ -385,8 +385,7 @@ const handlePlayerIconClick = async (event) => {
         document.getElementById('player-detail-container').style.display = 'none';
         document.getElementById('new-player-form').style.display = 'flex';
 
-        document.getElementById('background-blur').style.pointerEvents = 'all';
-        document.getElementById('background-blur').style.backdropFilter = 'blur(3px)';
+        document.getElementById('background-blur').classList.add('show');
 
         document.getElementById('cancel-new-player').style.left = '10px';
 
@@ -590,8 +589,7 @@ const handleRollHp = async (event) => {
 
 const handleCancelNewPlayer = (event) => {
 
-    document.getElementById('background-blur').style.pointerEvents = 'none';
-    document.getElementById('background-blur').style.backdropFilter = 'none';
+    document.getElementById('background-blur').classList.remove('show');
     document.getElementById('cancel-new-player').style.left = '-30%';
     document.getElementById('player-detail-pane').classList.remove('expanded');
     document.getElementById('new-player').classList.remove('selected')

@@ -2,6 +2,7 @@
 <%- include('../partials/navbar', {page: "index"}) %>
 
 <div id="campaign-container" class=" text-center">
+
     <% for (let campaign of campaigns) {%>
         <div class="campaign-card">
             <a href="campaigns/<%= campaign._id %>">
@@ -11,13 +12,63 @@
             </a>
         </div>
     <% } %> 
+
     <div id="new-campaign" class="campaign-card">
-        <a href="campaigns/new">
-            <div>
-                    <h2>NEW CAMPAIGN</h1>
-            </div>
-        </a>
+        <div>
+                <h2>NEW CAMPAIGN</h1>
+        </div>
     </div>
-    <a href="campaigns/new"><div id="index-background"></div></a>
+
+    <div id="index-background"></div>
+    <div id="background-blur"></div>
+    
+
+    <dialog id="new-campaign-dialog">
+        <button id="close-dialog-button">CANCEL</button>
+        <h3>CREATE NEW CAMPAIGN</h3>
+        <form action="campaigns/new" method="post" class="rb-form">
+
+            <div class="form-row">
+                <label for="campaign-name-input">CAMPAIGN NAME</label>
+                <input type="text" id="campaign-name-input" name="campaign[name]" 
+                placeholder="The Battle of Macross City" autofocus>
+            </div>
+
+            <div class="form-row">
+                <label for="campaign-description-input">CAMPAIGN DESCRIPTION (OPTIONAL)</label>
+                <textarea type="text" id="campaign-description-input" name="campaign[description]"
+                placeholder="Defend Macross City from the alien Zentraedi, piloting Veritech fighters and uncovering the secrets of the SDF-1 to save humanity from annihilation."></textarea>
+            </div>
+
+            <div class="form-row">
+
+                <label for="">SELECT BACKGROUND</label>
+
+                <div id="campaign-img-select">
+                    <input type="radio" name='campaign[img]' id="img1" value="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+1.jpg"/>
+                    <label for="img1">
+                        <img src="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+1.jpg" alt="background 1">
+                    </label>
+    
+                    <input type="radio" name='campaign[img]' id="img2" value="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+2.jpg"/>
+                    <label for="img2">
+                        <img src="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+2.jpg" alt="">
+                    </label>
+    
+                    <input type="radio" name='campaign[img]' id="img3" value="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+3.jpg"/>
+                    <label for="img3">
+                        <img src="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+3.jpg" alt="">
+                    </label>
+                </div>
+
+            </div>
+
+            <button id="create-campaign-submit">CREATE CAMPAIGN</button>
+        </form>
+    </dialog>
+
 </div>
+
+<script src="/js/campaignIndex.js"></script>
+
 

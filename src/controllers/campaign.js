@@ -8,6 +8,12 @@ module.exports.renderIndex = async (req, res) => {
     res.render('campaigns/index', { campaigns });
 }
 
+module.exports.createCampaign = async (req, res) => {
+    const campaign = new Campaign(req.body.campaign);
+    await campaign.save();
+    res.redirect(`/campaigns/${campaign._id}`);
+}
+
 module.exports.renderCampaign = async (req, res) => {
     const campaign = await Campaign.findById(req.params.id)
         .populate('players',{_id: 1, name: 1, img: 1});
