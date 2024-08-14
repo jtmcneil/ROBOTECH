@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1673.0",
+    "dotenv": "^16.4.5",
     "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
     "method-override": "^3.0.0",

@@ -10,9 +10,9 @@
     <div id="player-detail-pane">
 
       <div id="player-detail-container">
-          <a class="img-container expanded" href="">
+          <div class="img-container expanded" href="">
               <img src="" alt="">
-          </a>
+          </div>
           <div id="player-info">
               <div id="level-info">
                   <h5>Level</h5>
@@ -140,9 +140,10 @@
       </div>
 
       <form id="new-player-form" action="/players" method="POST">
-        <a class="img-container expanded" href="">
+        <div class="img-container expanded" href="">
+          <input type="file" id="player-image-upload" name="player-image-upload", accept="image/png, image/jpg, image/jpeg">
           <img src="/imgs/rick hunter.jpg" alt="">
-        </a>
+        </div>
         <div id="player-info">
             <div id="level-info">
                 <h5>Level</h5>

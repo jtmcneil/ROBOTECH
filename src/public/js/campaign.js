@@ -421,13 +421,24 @@ const collapsePlayerFolders = () => {
 const handleImgContainerClick = (event) => {
 
     // Expand img
-    event.preventDefault();
+    // event.preventDefault();
     event.currentTarget.classList.add('expanded');
-    
+
     // Collapse player-file
     collapsePlayerFolders();
-    const playerFile = document.getElementById('player-file');
-    playerFile.classList.remove('expanded');
+    // const playerFile = document.getElementById('player-file');
+    // playerFile.classList.remove('expanded');
+}
+
+const handlePlayerImgInput = (event) => {
+
+    const [file] = playerImageInput.files;
+
+    if (file) {
+        const imgDisplay = document.querySelector("#new-player-form .img-container img");
+        imgDisplay.src = URL.createObjectURL(file);
+    }
+
 }
 
 const handlePlayerFolderClick = (event) => {
@@ -468,8 +479,10 @@ const handlePlayerFolderClick = (event) => {
 }
   
 const handleRollAttribute = async (event) => {
+
     const attrRoller = event.currentTarget;
     attrRoller.classList.add("rolling");
+
     attrRoller.removeEventListener('click', handleRollAttribute);
     attrRoller.querySelector(
       ".attr-number"
@@ -910,6 +923,8 @@ const handleCreateChatacterClick = async (event) => {
 
     event.preventDefault();
 
+
+    // check that name is filled in
     const nameInput = document.getElementById('player-name');
     const confirmButton = event.currentTarget;
 
@@ -921,11 +936,46 @@ const handleCreateChatacterClick = async (event) => {
         return;
     }
 
+    const [img] = playerImageInput.files;
+
+    if (img) {
+
+        // get image upload URL;
+        let imgUploadUrl;
+        try {
+            const response = await fetch('/players/imgUrl');
+            if (!response.ok) {
+                console.log('network was not ok');
+            }
+            const json = await response.json();
+            imgUploadUrl = json.url;
+        } catch (error) {
+            console.log(error);
+        }
+
+
+        // upload image 
+        try {
+            const response = await fetch( imgUploadUrl, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                },
+                body: playerImageInput.files[0]
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
+        newPlayer.img = imgUploadUrl.split('?')[0];
+
+    }
+    
+
+
     newPlayer.name = nameInput.value;
     newPlayer.occupation = newPlayer.occupation._id;
     delete newPlayer.otherSkillCount;
-
-    console.log(newPlayer);
     
     try {
         const response = await fetch(`${document.URL}`, {
@@ -934,12 +984,12 @@ const handleCreateChatacterClick = async (event) => {
                 'Content-Type': 'application/json'
               },
             body: JSON.stringify(newPlayer),
-            redirect: 'follow'
+            // redirect: 'follow'
         })
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        location.reload();
+        // location.reload();
     } catch (error) {
         console.log(error);
     }
@@ -982,12 +1032,15 @@ imgContainers.forEach(img => {
     img.addEventListener('click', handleImgContainerClick);
 });
 
+const playerImageInput = document.getElementById('player-image-upload');
+playerImageInput.addEventListener('change', handlePlayerImgInput)
+
 const playerFolders = document.querySelectorAll('.player-folder');
 playerFolders.forEach(folder => {
     folder.addEventListener('click', handlePlayerFolderClick);
 })
 
-const attrRollers = document.querySelectorAll('.attr-roller');
+const attrRollers = document.querySelectorAll('.attr-roller:not(.rolled)');
 attrRollers.forEach((div) => div.addEventListener('click', handleRollAttribute));
 
 const hpRoller = document.getElementById('roll-hp');
