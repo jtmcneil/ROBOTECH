@@ -1,10 +1,10 @@
-const dotenv = require('dotenv');
+const dotenv = require('dotenv'); // TODO: Don't include in prod
+dotenv.config();
+
 const aws = require('aws-sdk');
 const crypto = require('crypto');
 const { promisify } =  require('util');
 const randomBytes = promisify(crypto.randomBytes);
-
-dotenv.config();
 
 const region = 'us-east-1';
 const bucketName = 'robotech-cc-bucket';

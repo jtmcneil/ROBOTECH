@@ -5,9 +5,17 @@
         <div id="title-content" class="d-flex flex-column min-vh-100 justify-content-center">
                 <h5>ROBOTECH: THE ROLE PLAYING GAME</h5>
                 <h1>CHARACTER CREATOR</h1>
-                <a href="/campaigns" class="skew-btn transition-link">GET STARTED</a>
+                <div class="d-flex">
+                        <% if (currentUser) { %>
+                                <a href="/campaigns" class="skew-btn transition-link">GET STARTED</a>
+                        <% } else { %>
+                                <a href="#" class="show-login skew-btn">LOGIN</a>
+                                <a href="#" class="show-register skew-btn mx-3">REGISTER</a>
+                        <% } %>
+                </div>
         </div>
 </div>
+
 <div id="decor-panel">
         <iframe
                 src="https://www.youtube.com/embed/d0MRkodkOGo?autoplay=1&mute=1&controls=0&loop=1?modestbranding=1"
@@ -17,3 +25,52 @@
         </iframe>
 </div>
 
+<div id="background-blur"></div>
+
+<dialog id="auth-dialog" class="rb-dialog">
+        <button id="close-dialog-button">CANCEL</button>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" class="rb-form" action="/login" method="POST">
+                <h3>LOGIN</h3>
+                <div class="form-row">
+                        <label for="login-email">EMAIL</label>
+                        <input type="email" id="login-email" name="email" autofocus required>
+                </div>
+                <div class="form-row">
+                        <label for="login-password">PASSWORD</label>
+                        <input type="password" id="login-password" name="password" required>
+                </div>
+                <button class="submit-button">LOGIN</button>
+                <p>New Recruit? <a href="#" class="show-register">SIGN UP</a></p>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="register-form" class="rb-form" action="/register" method="POST">
+                <h3>REGISTER</h3>
+                <div class="form-row">
+                        <label for="register-email">EMAIL</label>
+                        <input type="email" id="register-email" name="email" required>
+                </div>
+                <div class="form-row">
+                        <label for="register-email">DISPLAY NAME</label>
+                        <input type="text" id="register-display-name" name="displayName" required>
+                </div>
+                <div class="form-row">
+                        <label for="register-password">PASSWORD</label>
+                        <input type="password" id="register-password" name="password" required>
+                </div>
+                <div class="form-row">
+                        <label for="register-password">CONFIRM PASSWORD</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button class="submit-button">REGISTER</button>
+                <p>Veteran Player? <a href="#" class="show-login">LOGIN</a></p>
+        </form>
+
+        <form id="register-form" action="" method="POST">
+
+        </form>
+</dialog>
+
+<script src="/js/home.js"></script>

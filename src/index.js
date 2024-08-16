@@ -1,14 +1,24 @@
+const dotenv = require('dotenv'); // TODO: Don't include in prod
+dotenv.config();
+
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+
+const User = require('./models/user');
 
 const campaignRoutes = require('./routes/campaigns');
 const playerRoutes = require('./routes/players');
 const occupationRoutes = require('./routes/occupations');
 const skillRoutes = require('./routes/skills');
+const userRoutes = require('./routes/users');
 
 // connect to DB
 mongoose.connect('mongodb://localhost:27017/robotech', {});
@@ -31,24 +41,54 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public'))); 
-app.use(morgan('dev'));
+app.use(morgan('dev')); //TODO don't include in prod
+
+const sessionConfig = {
+    name: 'robosesh',
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true, // security measure
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // one week from now
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+
+app.use(session(sessionConfig));
+app.use(flash());
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy({usernameField: 'email'}, User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals = {
-        title: req.path === '/' ? 'HOME' : req.path.toUpperCase().substring(1)
+        path: req.path,
+        currentUser: req.user,
+        title: 'ROBOTECH CHARACTER CREATOR',
+        success: req.flash('success'),
+        error: req.flash('error')
     };
     next();
 });
 
 //ROUTES
-app.get('/', (req, res) => {
-    res.render( 'home');
-});
 
 app.use('/campaigns', campaignRoutes);
 app.use('/players', playerRoutes);
 app.use('/occupations', occupationRoutes);
 app.use('/skills', skillRoutes);
+app.use('/', userRoutes);
+
+app.get('/', (req, res) => {
+    res.render( 'home');
+});
 
 app.listen(3000, ()=> {
     console.log('Serving on port 3000');

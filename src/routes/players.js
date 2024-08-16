@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router()
-
+const player = require('../controllers/player');
 const catchAsync = require('../util/catchAsync');
-
-const   player = require('../controllers/player');
+const { isLoggedIn } = require('../util/auth');
 
 router.route('/imgUrl')
-    .get(catchAsync(player.getImgUploadUrl));
+    .get(isLoggedIn, catchAsync(player.getImgUploadUrl));
 
 router.route('/:id')
-    .get(catchAsync(player.getPlayer));
+    .get(isLoggedIn, catchAsync(player.getPlayer));
 
 module.exports = router;

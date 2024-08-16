@@ -6,6 +6,21 @@ body {
     overflow: hidden;
 }
 
+/* FLASH */
+
+.rb-flash {
+    position: absolute;
+    top: 40px;
+    right: 50%;
+    translate: 50%;
+
+    border: 1px soldid rgba(255,255,255, 0.4);
+    border-radius: 10px;
+    background-color: rgba(255,255,255, 0.9);
+
+    z-index: 200;
+}
+
 /* NAVBAR */
 
 #navbar {
@@ -339,7 +354,7 @@ body {
 
 }
 
-#new-campaign-dialog {
+.rb-dialog {
 
     /* position: relative; */
     
@@ -356,6 +371,12 @@ body {
     z-index: 100;
 }
 
+.rb-dialog h3 {
+    color: white;
+    font-family: 'Optima';
+    font-weight: 600;
+}
+
 #close-dialog-button {
     position: absolute;
     top: -35px;
@@ -370,12 +391,11 @@ body {
 
 }
 
-#new-campaign-dialog h3 {
-    color: white;
-    font-family: 'Optima';
-    font-weight: 600;
+.rb-form {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
 }
-
 
 .form-row {
 
@@ -396,7 +416,7 @@ body {
     font-weight: 600;
 }
 
-.rb-form input[type=text]{
+.rb-form input[type=text], .rb-form input[type=email], .rb-form input[type=password]{
     background-color: rgba(0,0,0,0.9);
     color: white;
     border-radius: 10px;
@@ -409,6 +429,7 @@ body {
     border-radius: 10px;
     padding: 5px;
     height: 120px;
+
 }
 
 #campaign-img-select {
@@ -444,10 +465,11 @@ body {
     border-radius: 10px;
 }
 
-#create-campaign-submit {
+.rb-form .submit-button {
 
     width: 100%;
     padding: 5px 0;
+    margin: 10px 0;
     border-radius: 10px;
     
     background: #1F4E7C;
@@ -459,12 +481,22 @@ body {
     transition: all 0.5s ease;
 }
 
-#create-campaign-submit:hover {
+.rb-form .submit-button:hover {
     /* padding: 10px 0; */
     text-shadow: 0 0 0.2rem rgba(255,255,255,0.5);
     box-shadow: 0 0 0.5rem black;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+}
+
+.rb-form p {
+    color: white;
+    padding: 10px;
+    margin: 0;
+
+    a {
+        color: white
+    }
 }
 
 /* CAMPAIGN SHOW PAGE */
