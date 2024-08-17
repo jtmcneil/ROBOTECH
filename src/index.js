@@ -19,6 +19,7 @@ const playerRoutes = require('./routes/players');
 const occupationRoutes = require('./routes/occupations');
 const skillRoutes = require('./routes/skills');
 const userRoutes = require('./routes/users');
+const miscRoutes = require('./routes/misc');
 
 // connect to DB
 mongoose.connect('mongodb://localhost:27017/robotech', {});
@@ -85,10 +86,16 @@ app.use('/players', playerRoutes);
 app.use('/occupations', occupationRoutes);
 app.use('/skills', skillRoutes);
 app.use('/', userRoutes);
+app.use('/', miscRoutes);
 
 app.get('/', (req, res) => {
     res.render( 'home');
 });
+
+app.all('*', (req, res, next) => {
+    res.render('misc/404');
+}); 
+
 
 app.listen(3000, ()=> {
     console.log('Serving on port 3000');

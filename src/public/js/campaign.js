@@ -336,6 +336,16 @@ const setPlayer = (player) => {
     setAttribute(document.querySelector("#PB-attr"), attributesMap.get("PB"));
     setAttribute(document.querySelector("#Spd-attr"), attributesMap.get("IQ"));
 
+    // HP
+    document.querySelector('#hp-folder .hp-container h1').innerText = player.hp;
+    document.querySelector('#hp-folder .hp-container .heart-container').innerHTML = `<i class="fa fa-heart"></i>`.repeat(player.hp);
+
+    // OCC
+
+    (document.querySelector('#occ-folder .confirmed-occ img')).src = player.occupation.img;
+    (document.querySelector('#occ-folder .confirmed-occ h3')).innerText = player.occupation.name;
+    (document.querySelector('#occ-folder .confirmed-occ p')).innerText = player.occupation.description;
+
     //SKILLS
     const occSkillItems = player.occSkills.map(skill => createSkillItem(skill.skill, skill.ability));
     const occSkillList = document.querySelector("#occ-skills-list");
@@ -632,7 +642,7 @@ const handleInfoConfirm = async (event) => {
 
         const occForm = document.querySelector('#occ-form .player-folder-content');
         occForm.innerHTML = `
-            <div id="confirmed-occ">
+            <div class="confirmed-occ">
                 <img src="${occupation.img}" alt="">
                 <h3>${occupation.name}</h3>
                 <p></p>
