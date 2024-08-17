@@ -80,8 +80,12 @@ body {
 }
 
 .nav-button {
-    padding: 0 10px;
+    padding: 0 5px;
     transform: skewX(10deg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #logo a {
@@ -126,18 +130,14 @@ body {
     text-shadow: 0 0 0.1rem white;
 }
 
-
-
 .nav-button a {
-
-    width: 100%;
-    height: 100%;
 
     text-decoration: none;
     text-align: center;
 
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 0.9rem;
     color: black;
 }
 
@@ -216,36 +216,12 @@ footer a {
 
 /* HOME PAGE */
 
-#title-content {
-    color: white;
-    transform: skewX(15deg);
-    padding-left: 22%;
-}
-
-
-#title-content h5 {
-    font-family: "Optima";
-    font-weight: 100;
-    font-size: 18pt;
-    text-shadow: 0 0 1rem black;
-}
-
-#title-content h1 {
-    font-family: "Optima";
-    font-weight: 700;
-    font-size: 60pt;
-    letter-spacing: .2rem;
-    text-shadow: 0 0 0.1rem black;
-}
-
 #title-panel {
 
-    animation: 3s ease-in-out 0s 1 landingAnimation;
-    overflow: hidden;
-
+    /* animation: 3s ease-in-out 0s 1 landingAnimation; */
     position: absolute;
+    overflow: hidden;
     top: 0;
-    bottom: 0;
     left: 0;
     width: 60%;
     height: 100%;
@@ -258,6 +234,28 @@ footer a {
     transition: all 2s ease-in-out;
 }
 
+#title-content {
+    color: white;
+    transform: skewX(15deg);
+    padding-left: 22%;
+}
+
+
+#title-content h5 {
+    font-family: "Optima";
+    font-weight: 100;
+    font-size: 14pt;
+    text-shadow: 0 0 1rem black;
+}
+
+#title-content h1 {
+    font-family: "Optima";
+    font-weight: 700;
+    font-size: 48pt;
+    letter-spacing: .2rem;
+    text-shadow: 0 0 0.1rem black;
+}
+
 #title-panel:hover {
     width: 62%;
     box-shadow: 0 0 0 8px white, 5px 0px 5px rgba(0,0,0,0.9);
@@ -268,8 +266,9 @@ footer a {
     top: 0;
     bottom: 0;
     right: -300px;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    scale: 1.2;
     pointer-events: none;
 }
 
@@ -281,7 +280,7 @@ footer a {
 
 .skew-btn {
     text-decoration: none;
-    padding: 0.3rem 2rem;
+    padding: 5px 1rem;
     transform: skewX(-15deg);
     transform-origin: bottom left; 
     border-radius: 5px;
@@ -332,7 +331,7 @@ footer a {
     display: flex;
     justify-content: center;
 
-    transition: all ease-out 0.1s;
+    transition: all ease-out 0.3s;
 }
 
 .campaign-card h2 {
@@ -403,15 +402,24 @@ footer a {
     bottom: 50%;
     transform: translate(-50%, 50%) skewX(10deg);
 
+    transition: letter-spacing 5s ease-in-out;
+
 }
 
 #new-campaign a {
-    width: 200%;
+    width: 100%;
     height: 100%;
 }
 
 #new-campaign:hover {
     flex: 7;
+    background-color: #C62828;
+
+}
+
+#new-campaign:hover h2 {
+    letter-spacing: 0.4rem;
+    color: black;
 }
 
 #index-background {

@@ -6,7 +6,13 @@ const closeDialogButton = document.getElementById('close-dialog-button');
 const backgroundBlur = document.getElementById('background-blur');
 const imgLabels = document.querySelectorAll('#campaign-img-select label')
 
+
 // helper functions
+
+const hideDialog = () => {
+    newCampaignDialog.close();
+    backgroundBlur.classList.remove('show');
+}
 
 // event listeners
 
@@ -31,4 +37,10 @@ closeDialogButton.addEventListener('click', (event) => {
 
 imgLabels.forEach(label => {
     label.addEventListener('click', handleCampaignImgSelect);
+})
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === "Escape") {
+        hideDialog();
+    }
 })
