@@ -6,12 +6,14 @@ const skillSeeds = require('./seeds/skills');
 const occSeeds = require('./seeds/occupations');
 const playerSeeds = require('./seeds/players');
 const campaignSeeds = require('./seeds/campaigns');
+const userSeeds = require('./seeds/users');
 
 //Models
 const Skill = require('../src/models/skill');
 const Occupation = require('../src/models/occupation');
 const Player = require('../src/models/player');
 const Campaign = require('../src/models/campaign');
+const User = require('../src/models/user');
 
 
 mongoose.connect('mongodb://localhost:27017/robotech', {});
@@ -248,6 +250,30 @@ const seedCampaigns = async () => {
 
 };
 
+const seedUsers = async () => {
+
+    // Erase Users
+    await User.deleteMany({});
+    console.log('Seeding Users');
+    console.log(`${campaignSeeds.length} users in user seeds file`);
+
+    let userCount = 0;
+    for (let userSeed of userSeeds) {
+
+        // replace campaign names with IDs
+        for (let i = 0; i < userSeed.campaigns.length; i++) {
+            const campaignObj = await Campaign.findOne({ name: userSeed.campaigns[i] });
+            userSeed.campaigns[i] = campaignObj._id;
+        }
+
+        const user = new User(userSeed);
+        const registeredUser = await(User.register(user, 'user')) // all user passwords are user
+        userCount++;
+
+    }
+
+}
+
 const seedDB = async() => {
     await seedSkills();
     console.log('----------');
@@ -256,6 +282,8 @@ const seedDB = async() => {
     await seedPlayers();
     console.log('----------');
     await seedCampaigns();
+    console.log('----------');
+    await seedUsers();
     console.log('----------');
 };
 

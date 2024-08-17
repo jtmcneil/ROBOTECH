@@ -4,7 +4,7 @@ const Player = require('../models/player');
 const Occupation = require('../models/occupation');
 
 module.exports.renderIndex = async (req, res) => {
-    const campaigns = await Campaign.find({});
+    const campaigns = await Campaign.find({ _id: { $in: req.user.campaigns } });
     res.render('campaigns/index', { campaigns });
 }
 

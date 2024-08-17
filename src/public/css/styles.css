@@ -10,15 +10,29 @@ body {
 
 .rb-flash {
     position: absolute;
+    display: flex;
     top: 40px;
-    right: 50%;
-    translate: 50%;
+    padding: 0 60px;
+    transform: skewX(-10deg);
+    translate: -10px;
+    border-radius: 2px;
 
-    border: 1px soldid rgba(255,255,255, 0.4);
-    border-radius: 10px;
-    background-color: rgba(255,255,255, 0.9);
+    z-index: 100;
 
-    z-index: 200;
+    color: white;
+    font-family: 'Optima';
+    text-transform: uppercase;
+    border: 2px solid rgba(255,255,255,0.5);
+    
+    animation: flash-message 10s forwards;
+}
+
+.rb-flash.alert-success {
+    background-color: #1F4E7C;
+}
+
+.rb-flash.alert-danger {
+    background-color: #C62828;
 }
 
 /* NAVBAR */
@@ -26,36 +40,60 @@ body {
 #navbar {
     position: absolute;
     width: 100%;
-    top: 5px;
-    
+    top: 10px;
+
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+
+    font-family: 'Optima';
 
     z-index: 100;
 }
 
 #navbar div {
     display: flex;
-    justify-content: space-around;
-    flex: 2;
-
-    gap: 10px;
-    margin: 0px 10px;
+    padding: 0 20px;
 }
 
-#navbar #logo {
-    flex: 3;
-    text-align: center;
+#navbar > div:not(#logo) {
+    background-color: white;
+    flex: 1;
+    transform: skewX(-10deg);
+    border-radius: 2px;
+}
+
+#navbar #nav-left {
+    translate: -10px;
+    margin-right: 10px;
+    .nav-button {
+        border-right: 1px solid rgba(0,0,0,0.2);
+    }
+}
+
+#navbar #nav-right {
+    justify-content: flex-end;
+    translate: 10px;
+    margin-left: 10px;
+    .nav-button {
+        border-left: 1px solid rgba(0,0,0,0.2);
+    }
+}
+
+.nav-button {
+    padding: 0 10px;
+    transform: skewX(10deg);
 }
 
 #logo a {
+
+    position: relative;
+
     text-decoration: none;
-    font-family: 'Optima';
+    text-align: center;
     font-size: 1.5rem;
     line-height: 1.5rem;
     color: white;
     text-shadow: 0 0 0.3rem black;
-    position: relative;
 
     transition: all ease-in-out 0.2s;
 }
@@ -88,13 +126,7 @@ body {
     text-shadow: 0 0 0.1rem white;
 }
 
-.nav-button {
-    background-color: white;
-    transform: skewX(-10deg);
-    border-radius: 2px;
-    max-width: 150px;
 
-}
 
 .nav-button a {
 
@@ -104,11 +136,9 @@ body {
     text-decoration: none;
     text-align: center;
 
-    font-family: "Optima";
     font-weight: bold;
     font-size: 1rem;
     color: black;
-    transform: skewX(10deg);
 }
 
 .nav-button::before {
@@ -297,7 +327,7 @@ body {
 }
 
 #campaign-container:hover .campaign-card:not(:hover) {
-    opacity: 0.9;
+    opacity: 0.6;
 }
 
 .campaign-card:hover img {
@@ -319,6 +349,7 @@ body {
     flex: 5;
     border-right: solid 10px #0b0b0b;
     background-color: #0b0b0b;
+    cursor: pointer;
 
 }
 
@@ -1618,6 +1649,20 @@ font-size: 1rem;
         color: #1f7c2b;
     }
     
+}
+
+@keyframes flash-message {
+
+    0% {
+        translate: -120%;
+    }
+    5%, 95% {
+        translate: -10px;
+    }
+    100% {
+        translate: -120%;
+        display: none;
+    }
 }
 
 

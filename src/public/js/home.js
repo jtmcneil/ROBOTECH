@@ -59,3 +59,9 @@ registerForm.addEventListener('submit', (event) => {
     const passwordConfirm = document.getElementById('confirm-password');
     passwordConfirm.disabled = true;
 });
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === "Escape") {
+        hideDialog();
+    }
+})

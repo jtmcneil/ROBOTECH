@@ -1,30 +1,50 @@
 
+
+<% if (page !== 'home')  {%>
 <nav id="navbar">
-    <div>
-        <% if (page == "campaign") {%>
+
+    <div id="nav-left">
+
+        <% if (page === "campaign") { %>
+
             <div id="back-to-campaigns" class="nav-button">
                 <a href="/campaigns">CAMPAIGNS</a>
             </div>
+        
             <div id="edit-campaign" class="nav-button">
                 <a href="#">EDIT CAMPAIGN</a>
             </div>
+            
         <% } %>
+        
+
     </div>
+
+    
     <div id="logo">
-            <% if (page != "home") {%>
-            <a href="/" >
-                ROBOTECH CHARACTER CREATOR
-            </a>
-        <% } %>
+        <a href="/" >
+            ROBOTECH CHARACTER CREATOR
+        </a>
     </div>
-    <div>
-        <% if (page == "campaign") { %>
+    
+
+    <div id="nav-right">
+
+        <% if (page == 'suck') {%>
             <div id="edit-player" class="nav-button">
                 <a href="#">EDIT PLAYER</a>
             </div>
         <% } %>
-        <div id="account" class="nav-button">
-            <a href="/campaigns">ACCOUNT</a>
-        </div>
+
+        <% if (currentUser)  { %>
+            <div id="account" class="nav-button">
+                <a href="/campaigns">ACCOUNT</a>
+            </div>
+            <div id="logout" class="nav-button">
+                <a href="/logout">LOGOUT</a>
+            </div>
+        <% } %>
+
     </div>
 </nav>
+<% } %>
