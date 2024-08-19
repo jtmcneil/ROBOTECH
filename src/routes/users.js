@@ -14,4 +14,9 @@ router.route('/login')
 router.route('/logout')
     .get(user.logout);
 
+router.get('/account', (req, res) => {res.render('users/account')});
+
+router.route('/users/:id')
+    .post(catchAsync(user.updateUser));
+
 module.exports = router;

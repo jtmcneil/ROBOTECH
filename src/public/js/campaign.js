@@ -1013,7 +1013,7 @@ const loadedSkills = new Map();
 let newPlayer = {
 
     name: '',
-    img: '',
+    img: 'https://robotech-cc-bucket.s3.amazonaws.com/Default+Icon.png',
 
     attributes:[],
     race: 'Human',

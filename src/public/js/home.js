@@ -8,6 +8,9 @@ const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
 const backgroundBlur = document.getElementById('background-blur');
 const closeDialogButton = document.getElementById('close-dialog-button');
+const registerPassword = document.getElementById('register-password');
+const passwordConfirm = document.getElementById('confirm-password');
+const passwordMatchMessage = document.querySelector('.password-match-message');
 
 // helper functions
 const showLogin = () => {
@@ -33,6 +36,17 @@ const hideDialog = () => {
 
 // event listeners
 
+const submitRegister = (event) => {
+
+    if (registerPassword.value !== passwordConfirm.value) {
+        event.preventDefault();
+        passwordMatchMessage.classList.add('show');
+        return;
+    }
+
+    passwordConfirm.disabled = true;
+}
+
 // event listener assignment
 
 showLoginButtons.forEach(button => {
@@ -51,14 +65,10 @@ showRegisterButtons.forEach(button => {
 })
 
 closeDialogButton.addEventListener('click', (event) => {
-    hideDialog()
-    console.log('gmm');
+    hideDialog();
 });
 
-registerForm.addEventListener('submit', (event) => {
-    const passwordConfirm = document.getElementById('confirm-password');
-    passwordConfirm.disabled = true;
-});
+registerForm.addEventListener('submit', submitRegister);
 
 document.addEventListener('keydown', (event) => {
     if (event.key === "Escape") {

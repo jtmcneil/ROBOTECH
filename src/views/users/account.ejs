@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate') %>
+<%- include('../partials/navbar', {page: "index", currentUser}) %>
+
+<div id="misc-background">
+    <div id="misc-content">
+        <h1><%= currentUser.displayName %></h1>
+        <h3>Edit Your account below:</h3>
+        <form id="edit-account-form" class="rb-form" action="/users/<%= currentUser._id %>" method="POST">
+            <div class="form-row">
+                    <label for="email">EMAIL</label>
+                    <input type="email" id="email" name="user[email]" value="<%= currentUser.email %>">
+                    <label for="login-display-name">DISPLAY NAME</label>
+                    <input type="text" id="display-name" name="user[displayName]" value="<%= currentUser.displayName %>">
+            </div>
+            <div class="form-row">
+                    <label for="old-password">OLD PASSWORD</label>
+                    <input type="password" id="old-password" name="oldPass">
+                    <label for="new-password">NEW PASSWORD</label>
+                    <input type="password" id="new-password" name="newPass">
+                    <label for="login-password">CONFIRM NEW PASSWORD</label>
+                    <input type="password" id="new-password-confirm" name="newPassConf">
+                    <p class="password-match-message">Passwords must match.</p>
+            </div>
+            <button class="submit-button">CONFIRM CHANGES</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/account.js"></script>

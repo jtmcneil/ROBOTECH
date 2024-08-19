@@ -206,6 +206,7 @@ footer a {
     border: 1px solid rgba(255,255,255,0.6);
     padding: 50px;
     border-radius: 10px;
+    overflow-y: auto;
 
 }
 
@@ -504,6 +505,7 @@ footer a {
 
 .rb-form label {
     font-weight: 600;
+    color: black;
 }
 
 .rb-form input[type=text], .rb-form input[type=email], .rb-form input[type=password]{
@@ -587,6 +589,16 @@ footer a {
     a {
         color: white
     }
+}
+
+.rb-form p.password-match-message {
+    color: red;
+    padding: 0;
+    display: none;
+}
+
+.rb-form p.password-match-message.show {
+    display: inline
 }
 
 /* CAMPAIGN SHOW PAGE */

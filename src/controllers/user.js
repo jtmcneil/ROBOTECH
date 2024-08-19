@@ -32,3 +32,17 @@ module.exports.logout = (req, res) => {
         res.redirect('/');
     });
 }
+
+module.exports.updateUser = async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id, req.body.user);
+    if (req.body.newPass != '') {
+        try {
+            await user.changePassword(req.body.oldPass, req.body.newPass);
+            req.flash('success', 'Successfully reset your password');
+        } catch (err) {
+            req.flash('error', 'Old password entered incorrectly');
+        }
+    }
+    res.redirect('/account')
+}
