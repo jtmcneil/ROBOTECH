@@ -986,7 +986,7 @@ const handleCreateChatacterClick = async (event) => {
     delete newPlayer.otherSkillCount;
     
     try {
-        const response = await fetch(`${document.URL}`, {
+        const response = await fetch(`${document.URL}/newPlayer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -1065,3 +1065,22 @@ occIcons.forEach(icon => {
 const infoContainerButton = document.querySelector('#info-container .skew-btn');
 infoContainerButton.addEventListener('click', handleInfoConfirm);
 
+const editCampaignDialog = document.getElementById('edit-campaign-dialog');
+const closeEditCampaignDialogButton = document.getElementById('close-edit-campaign-dialog-button');
+const editCampaignButton = document.getElementById('edit-campaign');
+const backgroundBlur = document.getElementById('background-blur');
+editCampaignButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    editCampaignDialog.showModal();
+    backgroundBlur.classList.add('show');
+})
+closeEditCampaignDialogButton.addEventListener('click', (event) => {
+    editCampaignDialog.close();
+    backgroundBlur.classList.remove('show');
+})
+document.addEventListener('keydown', (event) => {
+    if (event.key === "Escape") {
+        editCampaignDialog.close();
+        backgroundBlur.classList.remove('show');
+    }
+})

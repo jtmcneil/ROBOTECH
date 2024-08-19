@@ -12,6 +12,9 @@ router.route('/new')
 
 router.route('/:id')
     .get(isLoggedIn, isCampaignOwner, catchAsync(campaign.renderCampaign))
-    .post(isLoggedIn,isCampaignOwner, catchAsync(campaign.createCharacter));
+    .post(isLoggedIn, isCampaignOwner, catchAsync(campaign.editCampaign));
+
+router.route('/:id/newPlayer')
+    .post(isLoggedIn,isCampaignOwner, catchAsync(campaign.createCharacter))
 
 module.exports = router;

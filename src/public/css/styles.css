@@ -461,7 +461,7 @@ footer a {
     font-weight: 600;
 }
 
-#close-dialog-button {
+.close-dialog-button {
     position: absolute;
     top: -35px;
     left: 0px;
@@ -479,6 +479,12 @@ footer a {
     display: flex;
     flex-direction: column;
     min-width: 300px;
+}
+
+.form-row-container{
+    display: flex;
+    gap: 10px;
+
 }
 
 .form-row {
@@ -616,7 +622,7 @@ footer a {
 
     width: 50%;
 
-    padding: 0 30px;
+    padding: 0 20px;
     margin: 0;
     position: relative;
     z-index: 50;
@@ -625,12 +631,20 @@ footer a {
 
 #campaign-name h1 {
 
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    outline: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(0,0,0,0.3);
+    
     color: white;
     font-family: "Optima";
     font-weight: 600;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     text-transform: uppercase;
     text-shadow: 2px 2px 0.3rem black;
+
 
 }
 
@@ -1587,6 +1601,30 @@ font-size: 1rem;
     box-shadow: 0 0 0.5rem white;
 }
 
+#new-player h3 {
+
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    
+    margin: 0;
+    padding: 0;
+
+    font-size: 5rem;
+    line-height: 5rem;
+    font-weight: 900;
+
+    color: grey;
+
+    transition: color 0.3s ease;
+    transition: font-size 1s ease;
+}
+
+#new-player:hover h3 {
+    color: white;
+    font-size: 6rem;
+}
+
 
 /* ANIMATIONS */
 
@@ -1719,3 +1757,4 @@ font-size: 1rem;
 }
 
 
+/* MEDIA QUERIES */

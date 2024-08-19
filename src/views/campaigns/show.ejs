@@ -155,7 +155,7 @@
             <div></div>
       </div>
 
-      <form id="new-player-form" action="/players" method="POST">
+      <form id="new-player-form" action="/<%=campaign._id %>/newPlayer" method="POST">
         <div class="img-container expanded" href="">
           <input type="file" id="player-image-upload" name="player-image-upload", accept="image/png, image/jpg, image/jpeg">
           <img src="/imgs/rick hunter.jpg" alt="">
@@ -342,11 +342,55 @@
             <div class="player-icon" id="new-player">
               <a href="">
                   <div class="img-gradient"></div>
-                  <h3>NEW PLAYER</h3>
+                  <h3>+</h3>
               </a>
           </div>
         </div>
     </div>
+
+    <dialog id="edit-campaign-dialog" class="rb-dialog">
+      <button id="close-edit-campaign-dialog-button" class="close-dialog-button">CANCEL</button>
+      <h3>EDIT CAMPAIGN</h3>
+      <form action="<%= campaign._id %>" method="post" class="rb-form" id="edit-campaign-form">
+
+          <div class="form-row">
+              <label for="campaign-name-input">CAMPAIGN NAME</label>
+              <input type="text" id="campaign-name-input" name="campaign[name]" 
+              value="<%= campaign.name %>" autofocus>
+          </div>
+
+          <div class="form-row">
+              <label for="campaign-description-input">CAMPAIGN DESCRIPTION (OPTIONAL)</label>
+              <textarea type="text" id="campaign-description-input" name="campaign[description]"
+              value="<%= campaign.description %>"></textarea>
+          </div>
+
+          <div class="form-row">
+
+              <label for="">SELECT BACKGROUND</label>
+
+              <div id="campaign-img-select">
+                  <input type="radio" name='campaign[img]' id="img1" value="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+1.jpg"/>
+                  <label for="img1">
+                      <img src="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+1.jpg" alt="background 1">
+                  </label>
+  
+                  <input type="radio" name='campaign[img]' id="img2" value="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+2.jpg"/>
+                  <label for="img2">
+                      <img src="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+2.jpg" alt="">
+                  </label>
+  
+                  <input type="radio" name='campaign[img]' id="img3" value="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+3.jpg"/>
+                  <label for="img3">
+                      <img src="https://robotech-cc-bucket.s3.amazonaws.com/campaign-backgrounds/background+3.jpg" alt="">
+                  </label>
+              </div>
+
+          </div>
+
+          <button class="submit-button">CONFIRM</button>
+      </form>
+  </dialog>
 
 </div>
 

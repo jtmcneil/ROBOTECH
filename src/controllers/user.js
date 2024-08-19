@@ -8,7 +8,7 @@ module.exports.register = async (req, res) => {
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if(err) return next(err)
-            req.flash('success', 'Welcome to the Robotech Character Creator! Create your first campaign now!,');
+            req.flash('success', 'Welcome to the Robotech Character Creator! Create your first campaign now!');
             res.redirect('/campaigns');
         });
     } catch (e) {

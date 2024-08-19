@@ -50,21 +50,33 @@
         <!-- REGISTER FORM -->
         <form id="register-form" class="rb-form" action="/register" method="POST">
                 <h3>REGISTER</h3>
-                <div class="form-row">
-                        <label for="register-email">EMAIL</label>
-                        <input type="email" id="register-email" name="email" required>
+                <div class="form-row-container">
+                        <div class="form-row">
+                                <label for="register-email">EMAIL</label>
+                                <input type="email" id="register-email" name="email" required>
+                        </div>
+                        <div class="form-row">
+                                <label for="register-email">DISPLAY NAME</label>
+                                <input type="text" id="register-display-name" name="displayName" required>
+                        </div>
                 </div>
-                <div class="form-row">
-                        <label for="register-email">DISPLAY NAME</label>
-                        <input type="text" id="register-display-name" name="displayName" required>
+                <div class="form-row-container">
+                        <div class="form-row">
+                                <label for="register-password">PASSWORD</label>
+                                <input type="password" id="register-password" name="password" required>
+                        </div>
+                        <div class="form-row">
+                                <label for="register-password">CONFIRM PASSWORD</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required>
+                        </div>
                 </div>
-                <div class="form-row">
-                        <label for="register-password">PASSWORD</label>
-                        <input type="password" id="register-password" name="password" required>
-                </div>
-                <div class="form-row">
-                        <label for="register-password">CONFIRM PASSWORD</label>
-                        <input type="password" id="confirm-password" name="confirm-password" required>
+                <div class="form-row-conatiner">
+                        <div class="form-row">
+                                <label for="cookie-consent">
+                                        <input type="checkbox" name="cookie-consent" id="cookie-consent" required>
+                                        This website stores a cookie in your browser to <br> deliver better user experience. By checking this box,  <br> you agree to the use of cookies. 
+                                </label>
+                        </div>
                 </div>
                 <button class="submit-button">REGISTER</button>
                 <p>Veteran Player? <a href="#" class="show-login">LOGIN</a></p>
