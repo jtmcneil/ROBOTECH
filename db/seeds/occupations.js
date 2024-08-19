@@ -12,7 +12,7 @@ Occupations = {
 
             The cyclone combat training is specifically limited to the VR-052 Cyclone Battler and the standard Battler weapon systems only.
             `,
-        img: "/imgs/occs/VP.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/VP.png",
         requirements: [
             {attribute: "IQ", value: 9},
             {attribute: "PP", value: 9},
@@ -79,7 +79,7 @@ Occupations = {
 
             After initial training (includes "Basic" destroid combat), the character receives mecha combat training in three specific destroids (Note: Cyclones and veritechs are not considered to be destroids. Choose 3 destroids.) This specialized training instills in the pilot the maximum knowledge and combat abilities of those three specific destroids. Additional mecha combat training can be selected as "other" skills. Note that each type of destroid is different, including the old RDF models. This means combat training in a new REF Gladiator MK III does not automatically include the RDF Gladiator MK I. The pilot can operate the RDF MK I Gladiator (the destroid O.C.C. training enables the pilot to operate ALL destroids), but combat will be at the basic level (See Hand to Hand Bonuses from Destroid Basic Combat Training). Although the rudimentaries in piloting any destroid are similar, the specific operating details, movement and response time, and weapon systems do vary with each individual type and model of mecha. See Robotech the Role-Playing Game (Book One) for RDF Mecha and Combat bonuses.
             `,
-        img: "/imgs/occs/DP.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/DP.png",
         requirements: [
             { attribute: "IQ", value: 7 }
         ],        
@@ -151,7 +151,7 @@ Occupations = {
 
             Destroid piloting skills are limited to the RDF and/or REF Gladiator, Excalibur, or Raidar X. Training will focus on one specific destroid model, rather than the full range of destroids. The character is also restricted to Hand to Hand Bonuses from Destroid Basic Combat Training. The basic training table illustrates the secondary nature of destroid piloting skills to this O.C.C. The skill is so limited that the character will have great difficulty piloting any other type of destroid (unlike the Destroid Pilot O.C.C.). The best he or she can hope for is to be able to start a different mecha and get it to move at half speed; no bonuses, and only one attack (total) per melee. Note: To pilot a destroid, the character must spend two "other" skill selections; one on pilot destroid (specific model) and one on basic destroid combat for that specific model. The character can elect to pilot additional specific destroids at a cost of one "other" skill each (includes additional operating knowledge and basic combat for each type/model).
             `,
-        img: "/imgs/occs/CR.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/CR.png",
         requirements: [
             {attribute: "IQ", value: 8},
             {attribute: "PP", value: 8}
@@ -225,7 +225,7 @@ Occupations = {
 
             Human destroid pilots can learn to operate the Zentraedi-style mecha, but the pods are generally considered to be exclusive to the Zentraedi warriors. Battle Pod mecha training counts as a separate skill choice for the destroid pilot and is not part of his/her formal training.
             `,
-        img: "/imgs/occs/ZW.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/ZW.png",
         requirements: [],
         levelXp: [1950, 3900, 8800, 17600, 25600, 35600, 50600, 70600, 95600, 125600, 175600, 225600, 275600, 325600, 375600],
         reqOccSkills:[
@@ -283,7 +283,7 @@ Occupations = {
 
             The alpha assigned to a REF military specialist will usually be the VAF-6R reconnaissance alpha.
             `,
-        img: "/imgs/occs/MS.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/MS.png",
         requirements: [
             {attribute: "IQ", value: 10},
             {attribute: "MA", value: 10}
@@ -352,7 +352,7 @@ Occupations = {
 
             Although the character can fix and maintain mecha with astounding skill, he/she cannot pilot mecha. If he/she has the pilot motorcycle skill, he/she can pilot the cyclone only in motorcycle mode. Likewise, the alpha and beta can be piloted in jet mode if the character has the pilot jet skill. No mecha combat skills are available (not even the "basic" training category). This is not some odd oversight on the part of the military, but is intentional. It was feared that knowledge of mecha mechanics and protoculture combined with the knowledge of piloting mecha would make the Bio-Maintenance Engineer a security threat. A disgruntled BME soldier or spy could, theoretically, have easy access to mecha, steal one, and sell the mecha and his services on the black market. To help curb this, the RDF brass made the decision to prohibit a BME from learning mecha piloting and mecha combat skills.
             `,
-        img: "/imgs/occs/BE.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/BE.png",
         requirements: [
             {attribute: "IQ", value: 8},
             {attribute: "PS", value: 10}
@@ -422,7 +422,7 @@ Occupations = {
 
             Each mecha type selected will cost two "other" skills; one to pilot and one for basic mecha combat of that one specific type and model of mecha. Of course, these two mecha skills may be the difference between life and death in combat.
             `,
-        img: "/imgs/occs/CE.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/CE.png",
         requirements: [
             {attribute: "IQ", value: 10}
         ],        
@@ -491,7 +491,7 @@ Occupations = {
 
             The intergalactic Robotech expedition and encountering of alien life and cultures has made the necessity of having scientists among the REF troops critical. A field scientist will be a member of most REF outposts, expeditions, and reconnaissance patrols. As with the communications engineer, it is wise for the scientist to master at least one mecha. However, the character also suffers similar restrictions. He can only learn to pilot a VAF-6R Reconnaissance Alpha, VR-038 Light Cyclone, and/or RDF or REF Gladiator, Excaliber, or Raidar X. The best possible mecha combat training is BASIC. Each mecha type/model selected will cost two "other" skill selections; one to learn to pilot that specific mecha and one for basic mecha combat (the player must spend the two skill selections to provide the character with any proficiency with a mecha).
             `,
-        img: "/imgs/occs/FS.png",
+        img: "https://robotech-cc-bucket.s3.amazonaws.com/occupation-icons/FS.png",
         requirements: [
             {attribute: "IQ", value: 12}
         ],
