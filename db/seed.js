@@ -1,3 +1,5 @@
+const dotenv = require('dotenv'); 
+dotenv.config();
 
 const mongoose = require('mongoose');
 
@@ -15,7 +17,8 @@ const Player = require('../src/models/player');
 const Campaign = require('../src/models/campaign');
 const User = require('../src/models/user');
 
-
+//mongodb://localhost:27017/robotech
+//process.env.MONGO_URL
 mongoose.connect('mongodb://localhost:27017/robotech', {});
 
 const db = mongoose.connection;

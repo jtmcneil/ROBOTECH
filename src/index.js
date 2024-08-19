@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const flash = require('connect-flash');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
@@ -22,7 +23,9 @@ const userRoutes = require('./routes/users');
 const miscRoutes = require('./routes/misc');
 
 // connect to DB
-mongoose.connect('mongodb://localhost:27017/robotech', {});
+//'mongodb://localhost:27017/robotech'
+const dbUrl = process.env.MONGO_URL;
+mongoose.connect(dbUrl, {});
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -44,7 +47,18 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(morgan('dev')); //TODO don't include in prod
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: process.env.SESSION_SECRET
+    }
+});
+
+store.on('error', (err)=>{console.log(`SESSION STORE ERROR: ${err}`);})
+
 const sessionConfig = {
+    store,
     name: 'robosesh',
     secret: process.env.SESSION_SECRET,
     resave: false,

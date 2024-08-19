@@ -334,7 +334,7 @@ const setPlayer = (player) => {
     setAttribute(document.querySelector("#PP-attr"), attributesMap.get("PP"));
     setAttribute(document.querySelector("#PE-attr"), attributesMap.get("PE"));
     setAttribute(document.querySelector("#PB-attr"), attributesMap.get("PB"));
-    setAttribute(document.querySelector("#Spd-attr"), attributesMap.get("IQ"));
+    setAttribute(document.querySelector("#Spd-attr"), attributesMap.get("Spd"));
 
     // HP
     document.querySelector('#hp-folder .hp-container h1').innerText = player.hp;
